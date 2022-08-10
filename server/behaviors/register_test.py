@@ -1,4 +1,4 @@
-from implements import InMemoryShelf
+from repositories import InMemoryShelf
 from models import ISBN, Book
 
 from .register import RegisterBook

@@ -1,7 +1,7 @@
 from collections import Counter
 
 from models import Book
-from repositories import ShelfRepositoryBase
+from .shelf import ShelfRepositoryBase
 
 
 class InMemoryShelf(ShelfRepositoryBase):
