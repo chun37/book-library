@@ -1,9 +1,9 @@
 from models import Book
-from repositories import ShelfRepositoryBase
+from services import ShelfServiceBase
 
 
 class RegisterBook:
-    def __init__(self, shelf: ShelfRepositoryBase) -> None:
+    def __init__(self, shelf: ShelfServiceBase) -> None:
         self.shelf = shelf
 
     def handle(self, book: Book) -> None:

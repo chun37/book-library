@@ -1,6 +1,5 @@
-from collections import Counter
-
 from models import Book
+
 from .shelf import ShelfRepositoryBase
 
 
@@ -12,5 +11,5 @@ class InMemoryShelf(ShelfRepositoryBase):
         self._shelf.append(book)
         return None
 
-    def get_books(self) -> Counter:
-        return Counter(self._shelf)
+    def get_books(self) -> list[Book]:
+        return self._shelf
