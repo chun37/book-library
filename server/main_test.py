@@ -1,9 +1,11 @@
 from fastapi.testclient import TestClient
 
-from api import BooksAPI, FastAPIConfig, Services
+from repositories import InMemoryShelf
+from services import Services, ShelfService
+from api import BooksAPI, FastAPIConfig
 
 cfg = FastAPIConfig(api_prefix="/api/v1")
-services = Services()
+services = Services(ShelfService(InMemoryShelf([])))
 
 client = TestClient(BooksAPI(cfg, services))
 
