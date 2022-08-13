@@ -9,6 +9,7 @@ from fastapi.routing import APIRoute
 from starlette.responses import JSONResponse, Response
 from starlette.routing import BaseRoute
 
+
 # pylint: disable=too-many-instance-attributes
 @dataclass(frozen=True)
 class Route:

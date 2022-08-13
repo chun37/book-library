@@ -1,8 +1,9 @@
 from dataclasses import asdict
 
-from models import ISBN, Book
 from pymongo import MongoClient
 from pymongo.collection import Collection
+
+from models import ISBN, Book
 
 from .shelf import ShelfRepositoryBase
 

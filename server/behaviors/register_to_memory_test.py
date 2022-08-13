@@ -1,3 +1,4 @@
+# pylint: disable=duplicate-code
 from models import ISBN, Book
 from repositories import InMemoryShelf
 from services import ShelfService

@@ -12,5 +12,5 @@ paths = [Route("", health_check.get, methods=["GET"])]
 class Router(APIRouter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for p in paths:
+        for p in paths:  # pylint: disable=invalid-name
             self.add_api_route(**asdict(p))

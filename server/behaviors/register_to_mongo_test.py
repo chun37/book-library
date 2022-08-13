@@ -1,5 +1,8 @@
-from models import ISBN, Book
+# pylint: disable=duplicate-code
+
 from mongomock import MongoClient
+
+from models import ISBN, Book
 from repositories import MongoShelf
 from services import ShelfService
 

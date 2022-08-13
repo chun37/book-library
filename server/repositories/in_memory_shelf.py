@@ -9,7 +9,6 @@ class InMemoryShelf(ShelfRepositoryBase):
 
     def add_book(self, book: Book) -> None:
         self._shelf.append(book)
-        return None
 
     def get_books(self) -> list[Book]:
         return self._shelf
