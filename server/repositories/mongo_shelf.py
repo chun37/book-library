@@ -1,15 +1,15 @@
 from dataclasses import asdict
 
 from models import ISBN, Book
+from pymongo import MongoClient
 from pymongo.collection import Collection
-from pymongo.database import Database
 
 from .shelf import ShelfRepositoryBase
 
 
 class MongoShelf(ShelfRepositoryBase):
-    def __init__(self, db: Database) -> None:
-        self.collection: Collection[Book] = db["shelf"]
+    def __init__(self, client: MongoClient) -> None:
+        self.collection: Collection[Book] = client["library"]["shelf"]
 
     def add_book(self, book: Book) -> None:
         self.collection.insert_one(asdict(book))
