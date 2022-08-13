@@ -1,6 +1,9 @@
-from fastapi import FastAPI
+from api import BooksAPI, FastAPIConfig, Services
 
-app = FastAPI()
+cfg = FastAPIConfig()
+services = Services()
+
+app = BooksAPI(cfg, services)
 
 
 @app.get("/")
