@@ -1,7 +1,7 @@
 from api_models import Book as JsonBook
-from models import Book, ISBN
-from services import Services
 from behaviors import RegisterBook
+from models import ISBN, Book
+from services import Services
 
 
 class Books:
