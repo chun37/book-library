@@ -2,7 +2,7 @@ from fastapi.testclient import TestClient
 
 from api import BooksAPI, FastAPIConfig, Services
 
-cfg = FastAPIConfig()
+cfg = FastAPIConfig(api_prefix="/api/v1")
 services = Services()
 
 client = TestClient(BooksAPI(cfg, services))

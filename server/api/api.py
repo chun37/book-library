@@ -7,7 +7,7 @@ from routes import health_check
 
 @dataclass(frozen=True)
 class FastAPIConfig:
-    pass
+    api_prefix: str = ""
 
     def asdict(self):
         return {}
@@ -21,4 +21,6 @@ class Services:
 class BooksAPI(FastAPI):
     def __init__(self, config: FastAPIConfig, services: Services):
         super().__init__(**config.asdict())
-        self.include_router(health_check.Router(prefix="/api/v1/health_check"))
+        self.include_router(
+            health_check.Router(prefix=f"{config.api_prefix}/health_check")
+        )
