@@ -4,6 +4,8 @@ services:
     build: ./server
     ports:
       - "8001:8000"
+    environment:
+      MONGODB_URL: mongodb://root:example@mongo:27017/
     depends_on:
       - mongo
 
