@@ -1,2 +1,3 @@
-def get():
-    return {"message": "Hello World"}
+class HealthCheck:
+    def get(self):
+        return {"message": "Hello World"}
