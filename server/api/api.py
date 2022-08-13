@@ -10,9 +10,6 @@ from services import Services
 class FastAPIConfig:
     api_prefix: str = ""
 
-    def asdict(self):
-        return {}
-
 
 class BooksAPI(FastAPI):
     def __init__(self, config: FastAPIConfig, services: Services):
