@@ -11,7 +11,7 @@ client = TestClient(BooksAPI(cfg, services))
 def test_APIが動いている():
     response = client.get("/api/v1/health_check")
     assert response.status_code == 200
-    assert response.json() == {}
+    assert response.json() == {"message": "Hello World"}
 
 
 def test_本の一覧が見れる():
