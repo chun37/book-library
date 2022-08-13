@@ -17,4 +17,6 @@ def test_本を登録する() -> None:
     instance = RegisterBook(shelf_service)
     instance.handle(book)
 
-    assert instance.shelf.get_books()[book] == 1
+    stock_books = instance.shelf.get_books()
+    assert len(stock_books) == 1
+    assert stock_books[0] == book

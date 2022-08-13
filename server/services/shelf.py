@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from collections import Counter
 
 from models import Book
 from repositories import ShelfRepositoryBase
@@ -11,7 +10,7 @@ class ShelfServiceBase(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_books(self) -> Counter:
+    def get_books(self) -> list[Book]:
         raise NotImplementedError
 
 
@@ -22,6 +21,5 @@ class ShelfService(ShelfServiceBase):
     def add_book(self, book: Book) -> None:
         self.shelf_repository.add_book(book)
 
-    def get_books(self) -> Counter:
-        books = self.shelf_repository.get_books()
-        return Counter(books)
+    def get_books(self) -> list[Book]:
+        return self.shelf_repository.get_books()
