@@ -1,4 +1,4 @@
-from models import Book
+from api_models import Book
 from services import Services
 
 
@@ -7,4 +7,7 @@ class Books:
         self.services = services
 
     def get(self) -> list[Book]:
-        return self.services.shelf_service.get_books()
+        return [
+            Book(isbn=b.isbn.id, name=b.name)
+            for b in self.services.shelf_service.get_books()
+        ]
