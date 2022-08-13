@@ -38,3 +38,32 @@ class Route:
     route_class_override: Optional[Type[APIRoute]] = None
     callbacks: Optional[List[BaseRoute]] = None
     openapi_extra: Optional[Dict[str, Any]] = None
+
+    def as_dict(self):
+        return {
+            "path": self.path,
+            "endpoint": self.endpoint,
+            "response_model": self.response_model,
+            "status_code": self.status_code,
+            "tags": self.tags,
+            "dependencies": self.dependencies,
+            "summary": self.summary,
+            "description": self.description,
+            "response_description": self.response_description,
+            "responses": self.responses,
+            "deprecated": self.deprecated,
+            "methods": self.methods,
+            "operation_id": self.operation_id,
+            "response_model_include": self.response_model_include,
+            "response_model_exclude": self.response_model_exclude,
+            "response_model_by_alias": self.response_model_by_alias,
+            "response_model_exclude_unset": self.response_model_exclude_unset,
+            "response_model_exclude_defaults": self.response_model_exclude_defaults,
+            "response_model_exclude_none": self.response_model_exclude_none,
+            "include_in_schema": self.include_in_schema,
+            "response_class": self.response_class,
+            "name": self.name,
+            "route_class_override": self.route_class_override,
+            "callbacks": self.callbacks,
+            "openapi_extra": self.openapi_extra,
+        }

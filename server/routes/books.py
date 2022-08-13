@@ -1,5 +1,3 @@
-from dataclasses import asdict
-
 from fastapi import APIRouter
 
 from api_models import Book as JsonBook
@@ -28,4 +26,4 @@ class Router(APIRouter):
         ]
 
         for p in paths:  # pylint: disable=invalid-name
-            self.add_api_route(**asdict(p))
+            self.add_api_route(**p.as_dict())

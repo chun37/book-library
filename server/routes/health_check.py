@@ -1,5 +1,3 @@
-from dataclasses import asdict
-
 from fastapi import APIRouter
 
 from controllers import HealthCheck
@@ -15,4 +13,4 @@ class Router(APIRouter):
         paths = [Route("", health_check_controller.get, methods=["GET"])]
 
         for p in paths:  # pylint: disable=invalid-name
-            self.add_api_route(**asdict(p))
+            self.add_api_route(**p.as_dict())
