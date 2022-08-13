@@ -2,7 +2,7 @@ from dataclasses import asdict
 
 from fastapi import APIRouter
 
-from api_models import Book
+from api_models import Book as JsonBook
 from controllers import Books
 from services import Services
 
@@ -15,7 +15,16 @@ class Router(APIRouter):
 
         books_controller = Books(services)
         paths = [
-            Route("", books_controller.get, methods=["GET"], response_model=list[Book])
+            Route(
+                "", books_controller.get, methods=["GET"], response_model=list[JsonBook]
+            ),
+            Route(
+                "",
+                books_controller.post,
+                methods=["POST"],
+                response_model=JsonBook,
+                status_code=201,
+            ),
         ]
 
         for p in paths:  # pylint: disable=invalid-name

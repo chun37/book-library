@@ -30,9 +30,16 @@ def test_本の一覧が見れる():
 
 
 def test_本が登録出来る():
-    response = client.get("/api/v1/books/BOOK_ID")
-    assert response.status_code == 200
-    assert isinstance(response.json(), dict)
+    response = client.post(
+        "/api/v1/books", json={"isbn": "0123456789", "name": "テスト本の名前"}
+    )
+
+    assert response.status_code == 201
+
+    book = response.json()
+    assert isinstance(book, dict)
+    assert book["isbn"] == "0123456789"
+    assert book["name"] == "テスト本の名前"
 
 
 def test_存在しないところにアクセスすると404が返る():
