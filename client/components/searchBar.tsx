@@ -1,5 +1,6 @@
 import { Box, TextField, InputAdornment, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import FixedButton from "./fixedButton";
 
 const SearchBar = () => {
   return (
@@ -17,9 +18,7 @@ const SearchBar = () => {
           ),
         }}
       />
-      <Button variant="contained" sx={{ my: 1, mr: 0 }}>
-        検索
-      </Button>
+      <FixedButton sx={{ mr: 0 }}>検索</FixedButton>
     </Box>
   );
 };
