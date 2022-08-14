@@ -1,18 +1,15 @@
-import { Box, SxProps, Theme } from "@mui/material";
-import AspectRatio from "@mui/joy/AspectRatio";
-import Image from "next/image";
-import dummy from "../public/dummy.png";
+import { Box } from "@mui/material";
 import { FC } from "react";
 
 type Props = {
-  sx: SxProps;
+  link: string;
 };
-const DisplayedBook: FC<Props> = ({ sx }) => {
+
+const DisplayedBook: FC<Props> = ({ link }) => {
   return (
     <Box
       sx={{
-        ...sx,
-        backgroundImage: "url('/dummy.png')",
+        backgroundImage: `url('${link}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         aspectRatio: "1/1.4",

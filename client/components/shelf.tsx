@@ -1,31 +1,36 @@
-import { Box } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import DisplayedBook from "./displayedBook";
 
 const Shelf = () => {
-  const books = new Array(50).fill(null);
+  const books = new Array(53).fill(null);
 
-  const displayedBooks = books.map((book, idx) => {
+  const displayedBooks = books.map((_, idx) => {
+    const randomLengthString = "あ".repeat(idx);
+    const bookImages = ["/dummy.png", "/isekaijoucho.jpg", "hoshi.jpg"];
+
     return (
-      <DisplayedBook
-        key={idx}
-        sx={{
-          flexBasis: "200px",
-          flexGrow: 1,
-          m: 1,
-        }}
-      ></DisplayedBook>
+      <Box key={idx} p={1} my={0.5}>
+        <Grid
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "200px",
+          }}
+        >
+          <DisplayedBook
+            link={bookImages[idx % bookImages.length]}
+          ></DisplayedBook>
+          <Typography mt={1}>{randomLengthString}</Typography>
+        </Grid>
+      </Box>
     );
   });
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-      }}
-    >
-      {displayedBooks}
+    <Box sx={{ padding: "auto" }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+        {displayedBooks}
+      </Box>
     </Box>
   );
 };
