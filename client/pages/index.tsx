@@ -5,10 +5,10 @@ import Shelf from "../components/shelf";
 
 const Home: NextPage = () => {
   return (
-    <Container fixed>
+    <>
       <SearchBar />
       <Shelf />
-    </Container>
+    </>
   );
 };
 

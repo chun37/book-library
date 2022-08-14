@@ -3,12 +3,11 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", my: 0.5 }}>
       <TextField
         id="book-name"
         label="タイトル"
         variant="outlined"
-        margin="normal"
         sx={{ mr: 2, flexGrow: 1 }}
         InputProps={{
           startAdornment: (
@@ -18,7 +17,7 @@ const SearchBar = () => {
           ),
         }}
       />
-      <Button variant="contained" sx={{ my: 3, mr: 0 }}>
+      <Button variant="contained" sx={{ my: 1, mr: 0 }}>
         検索
       </Button>
     </Box>
