@@ -1,6 +1,8 @@
+from typing import Any
+
 from fastapi import APIRouter
 
-from api_models import Book as JsonBook
+from api_models import JsonBook
 from controllers import Books
 from services import Services
 
@@ -8,8 +10,14 @@ from .route import Route
 
 
 class Router(APIRouter):
-    def __init__(self, services: Services, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(
+        self,
+        services: Services,
+        prefix: str,
+        *args: list[Any],
+        **kwargs: dict[str, Any]
+    ):
+        super().__init__(prefix=prefix, *args, **kwargs)  # type: ignore
 
         books_controller = Books(services)
         paths = [

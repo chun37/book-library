@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 from fastapi import FastAPI
 
@@ -10,10 +11,15 @@ from services import Services
 class FastAPIConfig:
     api_prefix: str = ""
 
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "api_prefix": self.api_prefix,
+        }
+
 
 class BooksAPI(FastAPI):
     def __init__(self, config: FastAPIConfig, services: Services):
-        super().__init__(**config.asdict())
+        super().__init__(**config.as_dict())  # type
 
         self.include_router(
             health_check.Router(prefix=f"{config.api_prefix}/health_check")

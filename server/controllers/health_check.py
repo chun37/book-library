@@ -1,3 +1,3 @@
 class HealthCheck:
-    def get(self):
+    def get(self) -> dict[str, str]:
         return {"message": "Hello World"}

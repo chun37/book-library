@@ -1,3 +1,5 @@
+from typing import Any
+
 from fastapi import APIRouter
 
 from controllers import HealthCheck
@@ -6,8 +8,8 @@ from .route import Route
 
 
 class Router(APIRouter):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, prefix: str, *args: list[Any], **kwargs: dict[str, Any]) -> None:
+        super().__init__(prefix=prefix, *args, **kwargs)  # type: ignore
 
         health_check_controller = HealthCheck()
         paths = [Route("", health_check_controller.get, methods=["GET"])]

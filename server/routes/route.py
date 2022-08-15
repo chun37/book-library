@@ -39,7 +39,7 @@ class Route:
     callbacks: Optional[List[BaseRoute]] = None
     openapi_extra: Optional[Dict[str, Any]] = None
 
-    def as_dict(self):
+    def as_dict(self) -> dict[str, Any]:
         return {
             "path": self.path,
             "endpoint": self.endpoint,

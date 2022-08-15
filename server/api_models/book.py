@@ -1,6 +1,12 @@
 from pydantic import BaseModel
 
+from models import Book
 
-class Book(BaseModel):
+
+class JsonBook(BaseModel):
     isbn: str
-    name: str
+    title: str
+
+    @classmethod
+    def from_book(cls, b: Book) -> "JsonBook":
+        return cls(isbn=b.isbn.id, title=b.title.name)
