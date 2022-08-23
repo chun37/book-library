@@ -1,6 +1,5 @@
-from api_models import JsonBook
 from behaviors import RegisterBook
-from models import ISBN, Book, Title
+from models import ISBN, Author, Book, CoverImage, JsonBook, Title
 from services import Services
 
 
@@ -13,6 +12,15 @@ class Books:
 
     def post(self, data: JsonBook) -> JsonBook:
         instance = RegisterBook(self.services.shelf_service)
-        b = Book(ISBN(data.isbn), Title(data.title))
+        author = self.services.authors_service.get_author(data.author_id)
+        if author is None:
+            raise ValueError
+        b = Book(
+            ISBN(data.isbn),
+            Title(data.title),
+            author,
+            CoverImage(data.cover_image_url),
+        )
+        print(b)
         instance.handle(b)
         return JsonBook.from_book(b)

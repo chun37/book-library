@@ -2,8 +2,8 @@ from typing import Any
 
 from fastapi import APIRouter
 
-from api_models import JsonBook
 from controllers import Books
+from models import JsonBook
 from services import Services
 
 from .route import Route
