@@ -59,7 +59,7 @@ def test_本の一覧が見れる() -> None:
     )
 
 
-def test_本が登録出来る() -> None:
+def test_著者の存在する本が登録出来る() -> None:
     response = client.post(
         "/api/v1/books",
         json={
@@ -78,6 +78,19 @@ def test_本が登録出来る() -> None:
     assert book["title"] == "テスト本の名前"
     assert book["author_id"] == author_id
     assert book["cover_image_url"] == "https://cover.openbd.jp/9784040647777.jpg"
+
+
+def test_著者の存在しない本が登録出来る() -> None:
+    response = client.post(
+        "/api/v1/books",
+        json={
+            "isbn": "0123456789",
+            "title": "テスト本の名前",
+            "author_id": uuid4().hex,
+            "cover_image_url": "https://cover.openbd.jp/9784040647777.jpg",
+        },
+    )
+    assert response.status_code == 400
 
 
 def test_存在しないところにアクセスすると404が返る() -> None:
